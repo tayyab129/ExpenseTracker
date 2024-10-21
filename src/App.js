@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get('expense-tracker-backend-production-ebbe.up.railway.app/api/expenses');
+        const response = await axios.get('http://localhost:5000/api/expenses');
         setExpenses(response.data);
       } catch (error) {
         console.error('Error fetching expenses:', error.response ? error.response.data : error.message);
@@ -30,7 +30,7 @@ function App() {
     };
 
     try {
-      const response = await axios.post('expense-tracker-backend-production-ebbe.up.railway.app/api/expenses', expenseData);
+      const response = await axios.post('http://localhost:5000/api/expenses', expenseData);
       setExpenses((prevExpenses) => [response.data, ...prevExpenses]);
       toast.success('Expense saved successfully!'); // Show success notification
     } catch (error) {
